@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh2s0yvka3er4"]
+
+[ext_resource type="Script" path="res://Systems/Network.gd" id="1_low1q"]
+[ext_resource type="Theme" uid="uid://djdjqfiiq7ppe" path="res://UI/FontTheme.tres" id="2_y6gcd"]
+
+[node name="MultiplayerMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_low1q")
+
+[node name="Multiplayer" type="VBoxContainer" parent="."]
+layout_mode = 0
+
+[node name="Host" type="Button" parent="Multiplayer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_y6gcd")
+text = "Host
+"
+
+[node name="Join" type="Button" parent="Multiplayer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_y6gcd")
+text = "Join
+"
+
+[node name="Start" type="Button" parent="Multiplayer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_y6gcd")
+text = "Start Game"
+
+[node name="MainMenu" type="Button" parent="Multiplayer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_y6gcd")
+text = "Main Menu
+"
+
+[connection signal="pressed" from="Multiplayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Multiplayer/Host" to="Multiplayer" method="_on_host_pressed"]
+[connection signal="pressed" from="Multiplayer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Multiplayer/Join" to="Multiplayer" method="_on_join_pressed"]
+[connection signal="pressed" from="Multiplayer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Multiplayer/Start" to="Multiplayer" method="_on_start_multiplayer_game_pressed"]
+[connection signal="pressed" from="Multiplayer/MainMenu" to="." method="_on_main_menu_pressed"]

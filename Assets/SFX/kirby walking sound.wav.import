@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kucml70k00og"
+path="res://.godot/imported/kirby walking sound.wav-082f59f7b90c998aaec0f59c59e61be2.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/kirby walking sound.wav"
+dest_files=["res://.godot/imported/kirby walking sound.wav-082f59f7b90c998aaec0f59c59e61be2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

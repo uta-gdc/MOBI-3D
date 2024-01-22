@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8kc66got7660"
+path="res://.godot/imported/Super Mario 64 Damage Sound Effect.wav-885f0f1f0006e10362fb6d589a02bee4.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Super Mario 64 Damage Sound Effect.wav"
+dest_files=["res://.godot/imported/Super Mario 64 Damage Sound Effect.wav-885f0f1f0006e10362fb6d589a02bee4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

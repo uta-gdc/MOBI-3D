@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwbh8t1j6eofx"]
+
+[ext_resource type="Script" path="res://Systems/PlayerMovement.gd" id="1_dcumi"]
+[ext_resource type="Texture2D" uid="uid://bw6iadf070ibw" path="res://blueIcon.png" id="2_udenu"]
+[ext_resource type="Script" path="res://Systems/SpeedLabel.gd" id="3_cwqlj"]
+[ext_resource type="Texture2D" uid="uid://wjme0nntaqwe" path="res://redIcon.png" id="4_5p2wc"]
+[ext_resource type="Script" path="res://Systems/EnemyPursuit.gd" id="4_sdcvs"]
+[ext_resource type="Script" path="res://Systems/NPCDialogue.gd" id="5_b2d3u"]
+[ext_resource type="Texture2D" uid="uid://c3ep7g4sr80df" path="res://greenIcon.png" id="5_y7bn1"]
+[ext_resource type="Resource" path="res://beginning.dtl" id="6_cj41x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48dbo"]
+size = Vector2(128, 128)
+
+[sub_resource type="Theme" id="Theme_u325f"]
+Label/font_sizes/font_size = 32
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(262, 131)
+script = ExtResource("1_dcumi")
+speed = 500
+accel = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(547, 282)
+texture = ExtResource("2_udenu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(547, 282)
+shape = SubResource("RectangleShape2D_48dbo")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(577, 325)
+zoom = Vector2(0.75, 0.75)
+position_smoothing_speed = 1.0
+
+[node name="DashTimer" type="Timer" parent="Player"]
+wait_time = 3.0
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 406.0
+offset_top = 507.0
+offset_right = 698.0
+offset_bottom = 552.0
+size_flags_horizontal = 4
+theme = SubResource("Theme_u325f")
+text = "The speed is __ m/s"
+script = ExtResource("3_cwqlj")
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(-316, -157)
+script = ExtResource("4_sdcvs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(547, 282)
+texture = ExtResource("4_5p2wc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(547, 282)
+shape = SubResource("RectangleShape2D_48dbo")
+
+[node name="NPC" type="CharacterBody2D" parent="."]
+position = Vector2(102, -222)
+script = ExtResource("5_b2d3u")
+timeline = ExtResource("6_cj41x")
+
+[node name="Sprite2D" type="Sprite2D" parent="NPC"]
+position = Vector2(547, 282)
+texture = ExtResource("5_y7bn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
+position = Vector2(547, 282)
+shape = SubResource("RectangleShape2D_48dbo")
+
+[node name="Button" type="Button" parent="NPC"]
+offset_left = 483.0
+offset_top = 218.0
+offset_right = 491.0
+offset_bottom = 346.0
+scale = Vector2(15.96, 1)
+focus_mode = 0
+action_mode = 0
+flat = true
+
+[connection signal="pressed" from="NPC/Button" to="NPC" method="_on_button_pressed"]

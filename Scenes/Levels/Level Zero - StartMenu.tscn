@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=3 uid="uid://cstawd86fbx3e"]
+
+[ext_resource type="Script" path="res://Systems/StartMenu.gd" id="1_b25lx"]
+[ext_resource type="Theme" uid="uid://djdjqfiiq7ppe" path="res://UI/FontTheme.tres" id="2_rtfjg"]
+[ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="3_7h3kg"]
+[ext_resource type="PackedScene" uid="uid://2c8f2tboqb1x" path="res://Scenes/Menus/settings_panel.tscn" id="3_cpejm"]
+[ext_resource type="AudioStream" uid="uid://dbvqhup05l8ys" path="res://Assets/Music/G# Major thing.ogg" id="5_wlbd8"]
+
+[sub_resource type="Theme" id="Theme_3rxlk"]
+Label/font_sizes/font_size = 48
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b25lx")
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.4
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="SinglePlayer" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rtfjg")
+text = "Single Player
+"
+
+[node name="Multiplayer" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rtfjg")
+text = "Multiplayer"
+
+[node name="Settings" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rtfjg")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rtfjg")
+text = "Credits"
+
+[node name="Exit" type="Button" parent="MainButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_rtfjg")
+text = "Exit"
+
+[node name="SettingsPanel" parent="." instance=ExtResource("3_cpejm")]
+visible = false
+
+[node name="SettingsExit" type="Button" parent="SettingsPanel"]
+layout_mode = 0
+offset_right = 86.0
+offset_bottom = 81.0
+icon = ExtResource("3_7h3kg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CreditsPanel" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameLabels" type="VBoxContainer" parent="CreditsPanel"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 182.0
+offset_right = 417.0
+offset_bottom = 462.0
+
+[node name="Label" type="Label" parent="CreditsPanel/NameLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Kenny Nguyen"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsPanel/NameLabels"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Sound Volume"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsPanel/NameLabels"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CreditsPanel/NameLabels"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Voice Volume"
+horizontal_alignment = 1
+
+[node name="CreditsExit" type="Button" parent="CreditsPanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("3_7h3kg")
+
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wlbd8")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MainButtons/SinglePlayer" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MainButtons/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="SettingsPanel/SettingsExit" to="." method="_on_settings_exit_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_credits_exit_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_settings_exit_pressed"]

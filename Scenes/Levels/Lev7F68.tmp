@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://dattkrnugucf7"]
+
+[ext_resource type="Script" path="res://Systems/PauseMenu.gd" id="4_krwjo"]
+[ext_resource type="Script" path="res://Systems/GameoverMenu.gd" id="6_dbt7s"]
+[ext_resource type="PackedScene" uid="uid://2c8f2tboqb1x" path="res://Scenes/Menus/settings_panel.tscn" id="6_emfpe"]
+[ext_resource type="Texture2D" uid="uid://ohbw1a0ersxn" path="res://Assets/Backgrounds/blackBackground.png" id="6_nbo4y"]
+[ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="7_nnv4u"]
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://Assets/gobot/gobot_skin.tscn" id="7_xg7hj"]
+[ext_resource type="AudioStream" uid="uid://g2meg00000jh" path="res://Assets/SFX/gameover.wav" id="13_j73vi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1py8u"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_cy6be"]
+sky_material = SubResource("ProceduralSkyMaterial_1py8u")
+
+[sub_resource type="Environment" id="Environment_23ux8"]
+background_mode = 2
+sky = SubResource("Sky_cy6be")
+tonemap_mode = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1vv06"]
+
+[sub_resource type="Theme" id="Theme_s10nw"]
+Label/font_sizes/font_size = 72
+
+[sub_resource type="Theme" id="Theme_024vc"]
+Button/font_sizes/font_size = 48
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_23ux8")
+camera_attributes = SubResource("CameraAttributesPractical_1vv06")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("4_krwjo")
+
+[node name="Label" type="Label" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -548.0
+offset_right = 116.0
+offset_bottom = -449.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_s10nw")
+text = "Paused"
+
+[node name="SettingsPanel" parent="PauseMenu" instance=ExtResource("6_emfpe")]
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu"]
+offset_left = 1046.0
+offset_top = 547.0
+offset_right = 1132.0
+offset_bottom = 628.0
+icon = ExtResource("7_nnv4u")
+icon_alignment = 1
+expand_icon = true
+
+[node name="GameoverMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("6_dbt7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="GameoverMenu"]
+position = Vector2(632, 377)
+texture = ExtResource("6_nbo4y")
+
+[node name="Label" type="Label" parent="GameoverMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -257.0
+offset_right = 170.0
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_s10nw")
+text = "Gameover"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameoverMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.5
+offset_top = -116.5
+offset_right = 133.5
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Restart" type="Button" parent="GameoverMenu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_024vc")
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="GameoverMenu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_024vc")
+text = "Main Menu"
+
+[node name="QuitGame" type="Button" parent="GameoverMenu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_024vc")
+text = "Quit Game"
+
+[node name="GameoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_j73vi")
+volume_db = -20.0
+bus = &"Sound FX"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(100, 1, 100)
+
+[node name="GobotSkin" parent="." instance=ExtResource("7_xg7hj")]
+transform = Transform3D(0.999983, 0.00588201, 0, -0.00588201, 0.999983, 0, 0, 0, 1, 3.38421, 4.3783, 10.3934)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996884, 0.0788767, 0, -0.0788767, 0.996884, 3.24159, 4.1217, 16.0525)
+
+[connection signal="pressed" from="PauseMenu/MainMenuButton" to="PauseMenu" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="GameoverMenu/VBoxContainer/Restart" to="GameoverMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameoverMenu/VBoxContainer/MainMenu" to="GameoverMenu" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="GameoverMenu/VBoxContainer/QuitGame" to="GameoverMenu" method="_on_quit_game_pressed"]

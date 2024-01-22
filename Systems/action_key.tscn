@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c05u76wyxacjf"]
+
+[ext_resource type="Script" path="res://Systems/ActionKey.gd" id="1_ut5o2"]
+
+[sub_resource type="Theme" id="Theme_44enx"]
+Button/font_sizes/font_size = 36
+
+[node name="ActionKey" type="Button"]
+theme = SubResource("Theme_44enx")
+script = ExtResource("1_ut5o2")

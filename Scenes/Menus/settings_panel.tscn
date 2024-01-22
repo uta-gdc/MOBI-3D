@@ -1,0 +1,230 @@
+[gd_scene load_steps=8 format=3 uid="uid://2c8f2tboqb1x"]
+
+[ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="1_6ro48"]
+[ext_resource type="Script" path="res://Systems/SettingsMenu.gd" id="1_b86pl"]
+[ext_resource type="AudioStream" uid="uid://g2meg00000jh" path="res://Assets/SFX/gameover.wav" id="3_e0c7b"]
+[ext_resource type="AudioStream" uid="uid://8kc66got7660" path="res://Assets/SFX/Super Mario 64 Damage Sound Effect.wav" id="4_1ndgo"]
+[ext_resource type="PackedScene" uid="uid://c05u76wyxacjf" path="res://Systems/action_key.tscn" id="5_3kfdh"]
+
+[sub_resource type="Theme" id="Theme_04t5v"]
+Button/font_sizes/font_size = 60
+
+[sub_resource type="Theme" id="Theme_3rxlk"]
+Label/font_sizes/font_size = 48
+
+[node name="SettingsPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b86pl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 369.0
+offset_top = 88.0
+offset_right = 1479.0
+offset_bottom = 179.0
+grow_horizontal = 2
+
+[node name="Audio" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_04t5v")
+text = "Audio"
+
+[node name="Display" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_04t5v")
+text = "Display"
+
+[node name="Keybinding" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_04t5v")
+text = "Keybinding"
+
+[node name="AudioCategory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 347.0
+offset_top = 5.0
+offset_right = 387.0
+offset_bottom = 45.0
+
+[node name="VolumeLabels" type="VBoxContainer" parent="AudioCategory"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 182.0
+offset_right = 417.0
+offset_bottom = 462.0
+
+[node name="Label" type="Label" parent="AudioCategory/VolumeLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Master Volume"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="AudioCategory/VolumeLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Sound Volume"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="AudioCategory/VolumeLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Music Volume"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="AudioCategory/VolumeLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Voice Volume"
+horizontal_alignment = 2
+
+[node name="VolumeSliders" type="VBoxContainer" parent="AudioCategory"]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 215.0
+offset_right = 1100.0
+offset_bottom = 450.0
+theme_override_constants/separation = 57
+
+[node name="MasterVolume" type="HSlider" parent="AudioCategory/VolumeSliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SoundVolume" type="HSlider" parent="AudioCategory/VolumeSliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicVolume" type="HSlider" parent="AudioCategory/VolumeSliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="VoiceVolume" type="HSlider" parent="AudioCategory/VolumeSliders"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="TestSound" type="Button" parent="AudioCategory"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 478.0
+offset_right = 442.0
+offset_bottom = 614.0
+icon = ExtResource("1_6ro48")
+
+[node name="TestVoice" type="Button" parent="AudioCategory"]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 473.0
+offset_right = 866.0
+offset_bottom = 609.0
+icon = ExtResource("1_6ro48")
+
+[node name="TestingSound" type="AudioStreamPlayer2D" parent="AudioCategory"]
+stream = ExtResource("3_e0c7b")
+bus = &"Sound FX"
+
+[node name="TestingVocal" type="AudioStreamPlayer2D" parent="AudioCategory"]
+stream = ExtResource("4_1ndgo")
+bus = &"Voice"
+
+[node name="DisplayCategory" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="KeybindingCategory" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ActionLabels" type="VBoxContainer" parent="KeybindingCategory"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 200.0
+offset_right = 417.0
+offset_bottom = 480.0
+
+[node name="Label" type="Label" parent="KeybindingCategory/ActionLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Move Up"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="KeybindingCategory/ActionLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Move Left"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="KeybindingCategory/ActionLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Move Down"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="KeybindingCategory/ActionLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Move Right"
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="KeybindingCategory/ActionLabels"]
+layout_mode = 2
+theme = SubResource("Theme_3rxlk")
+text = "Interact"
+horizontal_alignment = 2
+
+[node name="KeybindButtons" type="VBoxContainer" parent="KeybindingCategory"]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 200.0
+offset_right = 926.0
+offset_bottom = 522.0
+theme_override_constants/separation = 20
+
+[node name="Button" parent="KeybindingCategory/KeybindButtons" instance=ExtResource("5_3kfdh")]
+layout_mode = 2
+
+[node name="Button2" parent="KeybindingCategory/KeybindButtons" instance=ExtResource("5_3kfdh")]
+layout_mode = 2
+action = "MoveLeft"
+
+[node name="Button3" parent="KeybindingCategory/KeybindButtons" instance=ExtResource("5_3kfdh")]
+layout_mode = 2
+action = "MoveBackward"
+
+[node name="Button4" parent="KeybindingCategory/KeybindButtons" instance=ExtResource("5_3kfdh")]
+layout_mode = 2
+action = "MoveRight"
+
+[node name="Button5" parent="KeybindingCategory/KeybindButtons" instance=ExtResource("5_3kfdh")]
+layout_mode = 2
+action = "Interact"
+
+[connection signal="pressed" from="HBoxContainer/Audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="HBoxContainer/Display" to="." method="_on_display_pressed"]
+[connection signal="pressed" from="HBoxContainer/Keybinding" to="." method="_on_keybinding_pressed"]
+[connection signal="value_changed" from="AudioCategory/VolumeSliders/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="AudioCategory/VolumeSliders/SoundVolume" to="." method="_on_sound_volume_value_changed"]
+[connection signal="value_changed" from="AudioCategory/VolumeSliders/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="AudioCategory/VolumeSliders/VoiceVolume" to="." method="_on_voice_volume_value_changed"]
+[connection signal="pressed" from="AudioCategory/TestSound" to="." method="_on_test_sound_pressed"]
+[connection signal="pressed" from="AudioCategory/TestVoice" to="." method="_on_test_voice_pressed"]

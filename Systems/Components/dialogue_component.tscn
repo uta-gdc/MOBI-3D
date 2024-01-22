@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://338dke48iib1"]
+
+[ext_resource type="Script" path="res://Systems/Components/DialogueComponent.gd" id="1_qk50f"]
+[ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="2_tl418"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s054d"]
+size = Vector3(1, 0.500244, 1)
+
+[node name="DialogueComponent" type="Node3D"]
+script = ExtResource("1_qk50f")
+
+[node name="InteractArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1.00049, 0)
+shape = SubResource("BoxShape3D_s054d")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88006, 0)
+visible = false
+billboard = 1
+
+[node name="InteractScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Interact" type="TouchScreenButton" parent="InteractScreen"]
+position = Vector2(1248, 760)
+scale = Vector2(1.42187, 1.39344)
+texture_normal = ExtResource("2_tl418")
+action = "Interact"
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

@@ -1,0 +1,8 @@
+[signal arg="dialogue_start"]
+blank: Whats popping G.
+blank: My name is blank
+- Nice to meet you.
+	blank: Just keep heading forward someone else can help you out.
+- .......
+	blank: Okay???
+[signal arg="dialogue_end"]
