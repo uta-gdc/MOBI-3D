@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cstawd86fbx3e"]
 
-[ext_resource type="Script" path="res://Systems/StartMenu.gd" id="1_b25lx"]
+[ext_resource type="Script" path="res://Systems/Menus/StartMenu.gd" id="1_b25lx"]
 [ext_resource type="Theme" uid="uid://djdjqfiiq7ppe" path="res://UI/FontTheme.tres" id="2_rtfjg"]
 [ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="3_7h3kg"]
 [ext_resource type="PackedScene" uid="uid://2c8f2tboqb1x" path="res://Scenes/Menus/settings_panel.tscn" id="3_cpejm"]
@@ -128,5 +128,5 @@ bus = &"Music"
 [connection signal="pressed" from="MainButtons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="SettingsPanel/SettingsExit" to="." method="_on_settings_exit_pressed"]
-[connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_credits_exit_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_settings_exit_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_credits_exit_pressed"]

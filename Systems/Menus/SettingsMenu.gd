@@ -1,19 +1,19 @@
 extends Node
 
-var master_volume
-var sound_effects_volume
-var music_volume
-var voice_volume
+var master_volume : float
+var sound_effects_volume : float
+var music_volume : float
+var voice_volume : float
 
-var master_index
-var sound_index
-var music_index
-var voice_index
+var master_index : int
+var sound_index : int
+var music_index : int
+var voice_index : int
 
-@onready var master_slider = $AudioCategory/VolumeSliders/MasterVolume
-@onready var sound_slider = $AudioCategory/VolumeSliders/SoundVolume
-@onready var music_slider = $AudioCategory/VolumeSliders/MusicVolume 
-@onready var voice_slider = $AudioCategory/VolumeSliders/VoiceVolume
+@onready var master_slider : Slider = $AudioCategory/VolumeSliders/MasterVolume
+@onready var sound_slider : Slider = $AudioCategory/VolumeSliders/SoundVolume
+@onready var music_slider : Slider = $AudioCategory/VolumeSliders/MusicVolume 
+@onready var voice_slider : Slider = $AudioCategory/VolumeSliders/VoiceVolume
 
 func _ready() -> void:
 	master_index = AudioServer.get_bus_index("Master")
@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _on_master_volume_value_changed(value) -> void:
 	master_volume = linear_to_db(value)
+	print(str(master_volume))
 	AudioServer.set_bus_volume_db(master_index , master_volume)
 
 func _on_sound_volume_value_changed(value) -> void:

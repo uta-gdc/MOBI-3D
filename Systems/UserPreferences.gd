@@ -1,6 +1,7 @@
 extends Resource
 class_name UserPreference
 
+#ATTEMPTED TO SAVE KEYBINDS, DOES NOT WORK AS OF JANUARY 23, 2024
 @export var keymaps: Dictionary = {}
 	
 func save_to_file(path: String) -> void:

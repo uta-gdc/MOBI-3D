@@ -1,10 +1,13 @@
 extends Node
 
+#MULTIPLAYER ATTEMPTED DOES NOT WORK AS OF JANUARY 23, 2024
+
+const PORT : int = 6007
+
 @export var max_players : int = 4
 
 var peer : ENetMultiplayerPeer
 var address : String = "127.0.0.1"
-const PORT : int = 6007
 
 var player_order : int = 1
 @export var player_scene : PackedScene

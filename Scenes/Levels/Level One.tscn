@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://dattkrnugucf7"]
 
-[ext_resource type="Script" path="res://Systems/PauseMenu.gd" id="4_krwjo"]
+[ext_resource type="Script" path="res://Systems/Menus/PauseMenu.gd" id="4_krwjo"]
 [ext_resource type="AudioStream" uid="uid://cwdf2xc88bg6l" path="res://Assets/Music/C Major Melody.ogg" id="5_7pq6n"]
-[ext_resource type="Script" path="res://Systems/GameoverMenu.gd" id="6_dbt7s"]
+[ext_resource type="Script" path="res://Systems/Menus/GameoverMenu.gd" id="6_dbt7s"]
 [ext_resource type="PackedScene" uid="uid://2c8f2tboqb1x" path="res://Scenes/Menus/settings_panel.tscn" id="6_emfpe"]
 [ext_resource type="Texture2D" uid="uid://ohbw1a0ersxn" path="res://Assets/Backgrounds/blackBackground.png" id="6_nbo4y"]
 [ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="7_nnv4u"]

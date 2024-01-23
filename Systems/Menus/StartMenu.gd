@@ -3,8 +3,9 @@ extends Control
 @onready var main_scene = "res://Scenes/Levels/Level One.tscn"
 
 func _on_start_game_pressed() -> void:
-	start_game.rpc()
+	start_game()
 
+#Abstraction functions
 func showPanel(panel) -> void:
 	panel.visible = true
 	$MainButtons.visible = false
@@ -12,6 +13,7 @@ func showPanel(panel) -> void:
 func exitPanel(panel) -> void:
 	panel.visible = false
 	$MainButtons.visible = true
+#
 
 func _on_settings_pressed() -> void:
 	showPanel($SettingsPanel)
@@ -28,7 +30,6 @@ func _on_settings_exit_pressed() -> void:
 func _on_credits_exit_pressed() -> void:
 	exitPanel($CreditsPanel)
 
-@rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:
 	get_tree().change_scene_to_file(main_scene)
 

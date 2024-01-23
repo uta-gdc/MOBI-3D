@@ -1,5 +1,6 @@
 extends Node
 
+#Remember to assign the level node in the Inspector window on the right side for this to not crash
 @export var level : Node3D
 
 @onready var player = $"../Level/Player"
@@ -17,6 +18,8 @@ func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/Level Zero - StartMenu.tscn")
 
 func _on_unstuck_button_pressed():
+	#This was created as collisions between Player and 
+	#anything else can occassionally lead to you being stuck. This allows the user to solve this.
 	player.global_transform.origin = Vector3(0, 0, 0)
 	self.visible = false
 	get_tree().paused = false

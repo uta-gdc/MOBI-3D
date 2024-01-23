@@ -2,6 +2,7 @@ extends Button
 
 @export var action: String = "MoveForward"
 
+#ATTEMPTED TO SAVE KEYBINDS DOES NOT WORK AS OF JANUARY 23, 2024
 #var keybinds_resource: UserPreference = UserPreference.new()
 
 func _init() -> void:

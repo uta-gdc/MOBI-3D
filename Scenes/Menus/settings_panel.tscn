@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://2c8f2tboqb1x"]
 
 [ext_resource type="Texture2D" uid="uid://cs53e3u27tg34" path="res://icon.svg" id="1_6ro48"]
-[ext_resource type="Script" path="res://Systems/SettingsMenu.gd" id="1_b86pl"]
+[ext_resource type="Script" path="res://Systems/Menus/SettingsMenu.gd" id="1_b86pl"]
 [ext_resource type="AudioStream" uid="uid://g2meg00000jh" path="res://Assets/SFX/gameover.wav" id="3_e0c7b"]
 [ext_resource type="AudioStream" uid="uid://8kc66got7660" path="res://Assets/SFX/Super Mario 64 Damage Sound Effect.wav" id="4_1ndgo"]
 [ext_resource type="PackedScene" uid="uid://c05u76wyxacjf" path="res://Systems/action_key.tscn" id="5_3kfdh"]
