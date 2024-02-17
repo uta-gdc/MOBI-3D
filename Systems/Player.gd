@@ -36,6 +36,7 @@ var dash_speed : int = speed * 50
 var max_jump_count : int = 3
 var jump_counter : int = 0
 
+var player_state := PlayerState.IDLE
 var is_jumping : bool = false
 var can_move : bool = true
 var can_dash : bool = true
@@ -66,6 +67,7 @@ var is_emoting : bool = false
 
 
 func _ready():
+	player_state = PlayerState.IDLE
 	_blink_timer.connect(
 			"timeout",
 			func():
@@ -85,7 +87,7 @@ func _ready():
 	Dialogic.signal_event.connect(dialogic_signal)
 
 func _process(_delta):
-	print(str("The velocity is ", velocity))
+	print(str(PlayerState.keys()[player_state]))
 	if Input.is_action_just_pressed("Emote1") and !is_jumping:
 		is_emoting = true
 		speed = 0
@@ -172,14 +174,17 @@ func _set_blink(state: bool):
 
 ## Sets the model to a neutral, action-free state.
 func idle():
+	player_state = PlayerState.IDLE
 	_state_machine.travel("Idle")
 	
 ## Sets the model to a running animation or forward movement.
 func run():
+	player_state = PlayerState.RUNNING
 	_state_machine.travel("Run")
 
 ## Sets the model to an upward-leaping animation, simulating a jump.
 func jump():
+	player_state = PlayerState.JUMPING
 	_state_machine.travel("Jump")
 
 ## Sets the model to a downward animation, imitating a fall.
@@ -188,19 +193,23 @@ func fall():
 
 ## Sets the model to an edge-grabbing animation.
 func edge_grab():
+	player_state = PlayerState.EMOTING
 	_state_machine.travel("EdgeGrab")
 
 ## Sets the model to a wall-sliding animation.
 func wall_slide():
+	player_state = PlayerState.EMOTING
 	_state_machine.travel("WallSlide")
 
 ## Plays a one-shot front-flip animation.
 ## This animation does not play in parallel with other states.
 func flip():
+	player_state = PlayerState.ROLLING
 	_animation_tree.set(_flip_shot_path, true)
 
 ## Makes a victory sign.
 func victory_sign():
+	player_state = PlayerState.EMOTING
 	_state_machine.travel("VictorySign")
 
 ## Plays a one-shot hurt animation.
