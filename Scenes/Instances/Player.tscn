@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cy36aygvs66pn"]
+[gd_scene load_steps=71 format=3 uid="uid://cy36aygvs66pn"]
 
 [ext_resource type="Script" path="res://Systems/Player.gd" id="1_bf7rg"]
 [ext_resource type="Texture2D" uid="uid://dq675fmt1rg8c" path="res://Assets/Models/gobot/textures/open_eye.png" id="2_fexxm"]
@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://kucml70k00og" path="res://Assets/SFX/kirby walking sound.wav" id="13_skff7"]
 [ext_resource type="AudioStream" uid="uid://snd380gbawd" path="res://Assets/SFX/Jump sound effect ｜ No copyright.wav" id="14_h4adt"]
 [ext_resource type="AudioStream" uid="uid://b7t0uwfhsnrt7" path="res://Assets/SFX/Whoosh Sounds effects No copyright.wav" id="15_bol4s"]
+[ext_resource type="PackedScene" uid="uid://4135bx1tnv61" path="res://Systems/Components/health_component.tscn" id="16_7kvpw"]
+[ext_resource type="AudioStream" uid="uid://8kc66got7660" path="res://Assets/SFX/Super Mario 64 Damage Sound Effect.wav" id="17_w5y72"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4001"]
 render_priority = 1
@@ -2181,14 +2183,14 @@ bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-0.109875, 0.0989111, -0.0510765)
 bones/1/rotation = Quaternion(0.679368, -0.310085, 0.392234, 0.537083)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(0, 0.349751, 0)
-bones/2/rotation = Quaternion(0.0697391, 0.0222311, -0.00155455, 0.997316)
-bones/3/rotation = Quaternion(1, -5.80861e-11, -7.50305e-08, 3.72607e-09)
-bones/4/rotation = Quaternion(-0.501062, -0.13894, -0.0504002, 0.852697)
-bones/5/rotation = Quaternion(0.388877, 1.05655e-06, -1.3274e-05, 0.92129)
-bones/6/rotation = Quaternion(-0.226765, 0.542419, 0.236207, 0.77367)
-bones/7/rotation = Quaternion(0.527464, -9.88131e-07, 1.80438e-05, 0.849578)
-bones/8/rotation = Quaternion(-0.683291, -0.257569, -0.621825, 0.283028)
+bones/2/position = Vector3(0, 0.366744, 0)
+bones/2/rotation = Quaternion(0.0697555, 0.00521638, -0.000364765, 0.99755)
+bones/3/rotation = Quaternion(1, -2.75335e-11, -7.57166e-08, -6.09296e-09)
+bones/4/rotation = Quaternion(-0.358469, -0.162268, -0.0336537, 0.918715)
+bones/5/rotation = Quaternion(0.164107, 1.11532e-06, -5.60015e-06, 0.986443)
+bones/6/rotation = Quaternion(-0.171836, 0.541522, 0.169289, 0.805337)
+bones/7/rotation = Quaternion(0.384322, -1.04508e-06, 1.31473e-05, 0.923199)
+bones/8/rotation = Quaternion(-0.599388, -0.291215, -0.703056, 0.248274)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(2.16937e-07, 5.35541e-07, -0.395029, 0.918669)
 bones/9/scale = Vector3(1, 1, 1)
@@ -2201,7 +2203,7 @@ bones/13/rotation = Quaternion(-0.502333, 1.50049e-05, -2.85054e-05, 0.864674)
 bones/14/rotation = Quaternion(-0.371224, -0.00197698, 0.00585369, 0.928523)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(-0.502333, 1.49999e-05, -2.85068e-05, 0.864674)
-bones/16/rotation = Quaternion(-0.631694, 0.279254, 0.674179, 0.261655)
+bones/16/rotation = Quaternion(-0.711696, 0.244014, 0.589103, 0.294794)
 bones/17/rotation = Quaternion(2.27203e-07, -5.84749e-07, 0.395029, 0.918669)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.289732, 0.637458, 0.217438, 0.680017)
@@ -2288,7 +2290,15 @@ bus = &"Sound FX"
 stream = ExtResource("15_bol4s")
 bus = &"Sound FX"
 
+[node name="HealthComponent" parent="." instance=ExtResource("16_7kvpw")]
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_w5y72")
+volume_db = -12.0
+bus = &"Sound FX"
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
 
 [editable path="gobot"]

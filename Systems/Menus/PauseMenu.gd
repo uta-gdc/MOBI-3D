@@ -20,7 +20,10 @@ func _on_main_menu_button_pressed() -> void:
 func _on_unstuck_button_pressed():
 	#This was created as collisions between Player and 
 	#anything else can occassionally lead to you being stuck. This allows the user to solve this.
-	player.global_transform.origin = Vector3(0, 0, 0)
-	self.visible = false
-	get_tree().paused = false
-	level.visible = true
+	if player != null:
+		player.global_transform.origin = Vector3(0, 0, 0)
+		self.visible = false
+		get_tree().paused = false
+		level.visible = true
+		return
+	print("Player is dead cannot respawn")

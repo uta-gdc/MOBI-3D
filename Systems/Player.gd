@@ -1,6 +1,14 @@
 extends CharacterBody3D
 class_name Player
 
+enum PlayerState{
+	IDLE,
+	RUNNING,
+	JUMPING,
+	ROLLING,
+	EMOTING
+}
+
 ## Emitted when Gobot's feet hit the ground will running.
 signal foot_step
 ## Gobot's MeshInstance3D model.
@@ -53,6 +61,7 @@ var is_emoting : bool = false
 @onready var footsteps_sound : AudioStreamPlayer3D = $Footsteps
 @onready var jump_sound : AudioStreamPlayer3D = $Jump
 @onready var roll_sound : AudioStreamPlayer3D  = $Roll
+@onready var hurt_sound : AudioStreamPlayer3D = $Hurt
 
 
 func _ready():
@@ -224,3 +233,6 @@ func dialogic_signal(argument) -> void:
 	elif argument == 'dialogue_end':
 		can_move = true
 		
+func _on_health_component_took_damage():
+	hurt()
+	hurt_sound.play()
