@@ -6,6 +6,7 @@ enum PlayerState{
 	RUNNING,
 	JUMPING,
 	ROLLING,
+	HURT,
 	EMOTING
 }
 

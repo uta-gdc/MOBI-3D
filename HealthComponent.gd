@@ -8,7 +8,7 @@ signal health_depleted
 
 @export var health : int = 3
 
-@onready var health_bar : ProgressBar = $HealthBar
+@onready var health_bar : ProgressBar = $SubViewport/HealthBar
 
 func _ready():
 	health_bar.max_value = max_health
@@ -23,6 +23,3 @@ func damaged(attack_damage : int = 1) -> void:
 		print("I died bruh")
 		emit_signal("health_depleted")
 		get_parent().queue_free()
-
-func _on_button_pressed():
-	damaged(1)
