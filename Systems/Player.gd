@@ -5,6 +5,7 @@ enum PlayerState{
 	IDLE,
 	RUNNING,
 	JUMPING,
+	FALLING,
 	ROLLING,
 	HURT,
 	EMOTING
@@ -189,6 +190,7 @@ func jump():
 
 ## Sets the model to a downward animation, imitating a fall.
 func fall():
+	player_state = PlayerState.FALLING
 	_state_machine.travel("Fall")
 
 ## Sets the model to an edge-grabbing animation.

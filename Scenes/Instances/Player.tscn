@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cy36aygvs66pn"]
+[gd_scene load_steps=73 format=3 uid="uid://cy36aygvs66pn"]
 
 [ext_resource type="Script" path="res://Systems/Player.gd" id="1_bf7rg"]
 [ext_resource type="Texture2D" uid="uid://dq675fmt1rg8c" path="res://Assets/Models/gobot/textures/open_eye.png" id="2_fexxm"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b7t0uwfhsnrt7" path="res://Assets/SFX/Whoosh Sounds effects No copyright.wav" id="15_bol4s"]
 [ext_resource type="PackedScene" uid="uid://4135bx1tnv61" path="res://Systems/Components/health_component.tscn" id="16_7kvpw"]
 [ext_resource type="AudioStream" uid="uid://8kc66got7660" path="res://Assets/SFX/Super Mario 64 Damage Sound Effect.wav" id="17_w5y72"]
+[ext_resource type="PackedScene" uid="uid://cxsclgnuuut6l" path="res://Systems/Components/hitbox_component.tscn" id="18_3lc0w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4001"]
 render_priority = 1
@@ -2165,6 +2166,8 @@ properties/1/path = NodePath("gobot/Armature/Skeleton3D/Gobot:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xycw4"]
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gobot_model")]
 script = ExtResource("1_bf7rg")
 gobot_model = NodePath("gobot/Armature/Skeleton3D/Gobot")
@@ -2183,14 +2186,14 @@ bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-0.109875, 0.0989111, -0.0510765)
 bones/1/rotation = Quaternion(0.679368, -0.310085, 0.392234, 0.537083)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(0, 0.367777, 0)
-bones/2/rotation = Quaternion(0.0697311, -0.026888, 0.00188019, 0.997202)
-bones/3/rotation = Quaternion(1, 1.70717e-10, -7.26952e-08, 7.46178e-09)
-bones/4/rotation = Quaternion(-0.362438, -0.194537, -0.0462308, 0.910306)
-bones/5/rotation = Quaternion(0.201003, 1.11478e-06, -6.85933e-06, 0.979591)
-bones/6/rotation = Quaternion(-0.19519, 0.507826, 0.158667, 0.823916)
-bones/7/rotation = Quaternion(0.386349, -1.04599e-06, 1.32281e-05, 0.922352)
-bones/8/rotation = Quaternion(-0.662315, -0.266804, -0.644122, 0.274339)
+bones/2/position = Vector3(0, 0.34997, 0)
+bones/2/rotation = Quaternion(0.0697374, 0.0233041, -0.00162958, 0.997292)
+bones/3/rotation = Quaternion(1, -5.80676e-11, -7.50302e-08, 3.72619e-09)
+bones/4/rotation = Quaternion(-0.499615, -0.13803, -0.0496527, 0.853737)
+bones/5/rotation = Quaternion(0.385686, 1.04657e-06, -1.31688e-05, 0.92263)
+bones/6/rotation = Quaternion(-0.224971, 0.543738, 0.235804, 0.773391)
+bones/7/rotation = Quaternion(0.525489, -9.71664e-07, 1.7989e-05, 0.8508)
+bones/8/rotation = Quaternion(-0.680062, -0.25903, -0.625355, 0.28169)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(2.16937e-07, 5.35541e-07, -0.395029, 0.918669)
 bones/9/scale = Vector3(1, 1, 1)
@@ -2203,7 +2206,7 @@ bones/13/rotation = Quaternion(-0.502333, 1.50049e-05, -2.85054e-05, 0.864674)
 bones/14/rotation = Quaternion(-0.371224, -0.00197698, 0.00585369, 0.928523)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(-0.502333, 1.49999e-05, -2.85068e-05, 0.864674)
-bones/16/rotation = Quaternion(-0.653682, 0.270432, 0.652881, 0.270764)
+bones/16/rotation = Quaternion(-0.635176, 0.277896, 0.670899, 0.263097)
 bones/17/rotation = Quaternion(2.27203e-07, -5.84749e-07, 0.395029, 0.918669)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.289732, 0.637458, 0.217438, 0.680017)
@@ -2297,6 +2300,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 stream = ExtResource("17_w5y72")
 volume_db = -12.0
 bus = &"Sound FX"
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("18_3lc0w")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649092, 0)
+shape = SubResource("CapsuleShape3D_xycw4")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

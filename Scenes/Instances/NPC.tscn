@@ -1,5 +1,6 @@
-[gd_scene load_steps=64 format=3 uid="uid://brxmbb723hivd"]
+[gd_scene load_steps=68 format=3 uid="uid://brxmbb723hivd"]
 
+[ext_resource type="Script" path="res://Systems/Enemy.gd" id="1_nlmjb"]
 [ext_resource type="Texture2D" uid="uid://dq675fmt1rg8c" path="res://Assets/Models/gobot/textures/open_eye.png" id="2_fosku"]
 [ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Assets/Models/gobot/model/gobot.glb" id="4_67dq6"]
 [ext_resource type="Texture2D" uid="uid://cq4vp8f4ihjn6" path="res://Assets/Models/gobot/model/gobot_gobot_roughness_test.png" id="5_7kgax"]
@@ -10,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cgkj45d67dalm" path="res://Assets/Models/gobot/model/gobot_gobot_roughness.png" id="10_s2xug"]
 [ext_resource type="Texture2D" uid="uid://d28w5bql3g21l" path="res://Assets/Models/gobot/model/gobot_gobot_normal.png" id="11_d8mx2"]
 [ext_resource type="PackedScene" uid="uid://338dke48iib1" path="res://Systems/Components/dialogue_component.tscn" id="11_h0j35"]
+[ext_resource type="PackedScene" uid="uid://4135bx1tnv61" path="res://Systems/Components/health_component.tscn" id="12_qsdfb"]
 [ext_resource type="AnimationLibrary" uid="uid://k45w5evgjbtp" path="res://Assets/Models/gobot/model/custom/custom_lib.res" id="12_rgcyr"]
+[ext_resource type="PackedScene" uid="uid://cxsclgnuuut6l" path="res://Systems/Components/hitbox_component.tscn" id="13_abkxj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4001"]
 render_priority = 1
@@ -2152,7 +2155,10 @@ node_connections = [&"FlipShot", 0, &"StateMachine", &"FlipShot", 1, &"Flip", &"
 radius = 0.356518
 height = 1.37394
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfgdk"]
+
 [node name="NPC" type="CharacterBody3D"]
+script = ExtResource("1_nlmjb")
 
 [node name="gobot" parent="." instance=ExtResource("4_67dq6")]
 
@@ -2163,14 +2169,14 @@ bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-0.109875, 0.0989111, -0.0510765)
 bones/1/rotation = Quaternion(0.679368, -0.310085, 0.392234, 0.537083)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(0, 0.368069, 0)
-bones/2/rotation = Quaternion(0.0697564, 0.00109089, -7.62826e-05, 0.997563)
-bones/3/rotation = Quaternion(1, -5.90789e-12, -7.56157e-08, 7.45061e-09)
-bones/4/rotation = Quaternion(-0.341036, -0.167038, -0.0318713, 0.924542)
-bones/5/rotation = Quaternion(0.136865, 1.1304e-06, -4.674e-06, 0.99059)
-bones/6/rotation = Quaternion(-0.168622, 0.538432, 0.163019, 0.809371)
-bones/7/rotation = Quaternion(0.371545, -1.05506e-06, 1.27071e-05, 0.928415)
-bones/8/rotation = Quaternion(-0.599388, -0.291215, -0.703056, 0.248274)
+bones/2/position = Vector3(0, 0.371297, 0)
+bones/2/rotation = Quaternion(0.0697472, -0.0162196, 0.00113419, 0.997432)
+bones/3/rotation = Quaternion(1, -1.89439e-10, -7.78254e-08, 5.63892e-09)
+bones/4/rotation = Quaternion(-0.283298, -0.186325, -0.0262691, 0.940391)
+bones/5/rotation = Quaternion(0.0482164, 1.134e-06, -1.64804e-06, 0.998837)
+bones/6/rotation = Quaternion(-0.164876, 0.52318, 0.145648, 0.823338)
+bones/7/rotation = Quaternion(0.339438, -1.07189e-06, 1.16104e-05, 0.940629)
+bones/8/rotation = Quaternion(-0.616968, -0.284846, -0.68768, 0.255556)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(2.16937e-07, 5.35541e-07, -0.395029, 0.918669)
 bones/9/scale = Vector3(1, 1, 1)
@@ -2183,7 +2189,7 @@ bones/13/rotation = Quaternion(-0.502333, 1.50049e-05, -2.85054e-05, 0.864674)
 bones/14/rotation = Quaternion(-0.371224, -0.00197698, 0.00585369, 0.928523)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(-0.502333, 1.49999e-05, -2.85068e-05, 0.864674)
-bones/16/rotation = Quaternion(-0.711696, 0.244014, 0.589103, 0.294794)
+bones/16/rotation = Quaternion(-0.696578, 0.251388, 0.606905, 0.288531)
 bones/17/rotation = Quaternion(2.27203e-07, -5.84749e-07, 0.395029, 0.918669)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.289732, 0.637458, 0.217438, 0.680017)
@@ -2246,6 +2252,17 @@ shape = SubResource("CapsuleShape3D_k6o5k")
 
 [node name="DialogueComponent" parent="." instance=ExtResource("11_h0j35")]
 
+[node name="HealthComponent" parent="." instance=ExtResource("12_qsdfb")]
+visible = false
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_abkxj")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641864, 0)
+shape = SubResource("CapsuleShape3D_rfgdk")
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 
 [editable path="gobot"]
