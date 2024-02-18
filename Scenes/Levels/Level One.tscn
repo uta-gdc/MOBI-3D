@@ -165,11 +165,6 @@ layout_mode = 2
 theme = SubResource("Theme_024vc")
 text = "Main Menu"
 
-[node name="QuitGame" type="Button" parent="GameoverMenu/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_024vc")
-text = "Quit Game"
-
 [node name="MobileControls" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -210,4 +205,3 @@ spawn_limit = 4
 [connection signal="pressed" from="PauseMenu/UnstuckButton" to="PauseMenu" method="_on_unstuck_button_pressed"]
 [connection signal="pressed" from="GameoverMenu/VBoxContainer/Restart" to="GameoverMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="GameoverMenu/VBoxContainer/MainMenu" to="GameoverMenu" method="_on_main_menu_pressed"]
-[connection signal="pressed" from="GameoverMenu/VBoxContainer/QuitGame" to="GameoverMenu" method="_on_quit_game_pressed"]

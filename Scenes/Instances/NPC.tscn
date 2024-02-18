@@ -2161,6 +2161,7 @@ height = 1.37394
 script = ExtResource("1_nlmjb")
 
 [node name="gobot" parent="." instance=ExtResource("4_67dq6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="gobot/Armature" index="0"]
 bones/0/position = Vector3(0.125361, 0.0989139, 0.0728901)
@@ -2169,14 +2170,14 @@ bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-0.109875, 0.0989111, -0.0510765)
 bones/1/rotation = Quaternion(0.679368, -0.310085, 0.392234, 0.537083)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(0, 0.357348, 0)
-bones/2/rotation = Quaternion(0.0697355, 0.0244714, -0.0017112, 0.997264)
-bones/3/rotation = Quaternion(1, -5.78038e-11, -7.50264e-08, 3.72788e-09)
-bones/4/rotation = Quaternion(-0.447066, -0.139719, -0.0409497, 0.882572)
-bones/5/rotation = Quaternion(0.299335, 1.08386e-06, -1.02287e-05, 0.954148)
-bones/6/rotation = Quaternion(-0.196342, 0.552437, 0.209955, 0.782421)
-bones/7/rotation = Quaternion(0.466283, -1.01202e-06, 1.59547e-05, 0.884636)
-bones/8/rotation = Quaternion(-0.628938, -0.280319, -0.676751, 0.260514)
+bones/2/position = Vector3(0, 0.35016, 0)
+bones/2/rotation = Quaternion(0.0697361, 0.0241101, -0.00168594, 0.997273)
+bones/3/rotation = Quaternion(1, -5.80517e-11, -7.503e-08, 3.72629e-09)
+bones/4/rotation = Quaternion(-0.497983, -0.137376, -0.0490115, 0.854833)
+bones/5/rotation = Quaternion(0.38242, 1.05059e-06, -1.30562e-05, 0.923988)
+bones/6/rotation = Quaternion(-0.223335, 0.544814, 0.235212, 0.773288)
+bones/7/rotation = Quaternion(0.523384, -9.64705e-07, 1.79119e-05, 0.852097)
+bones/8/rotation = Quaternion(-0.67716, -0.260332, -0.628497, 0.280488)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(2.16937e-07, 5.35541e-07, -0.395029, 0.918669)
 bones/9/scale = Vector3(1, 1, 1)
@@ -2189,7 +2190,7 @@ bones/13/rotation = Quaternion(-0.502333, 1.50049e-05, -2.85054e-05, 0.864674)
 bones/14/rotation = Quaternion(-0.371224, -0.00197698, 0.00585369, 0.928523)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(-0.502333, 1.49999e-05, -2.85068e-05, 0.864674)
-bones/16/rotation = Quaternion(-0.685823, 0.256412, 0.619032, 0.284076)
+bones/16/rotation = Quaternion(-0.638275, 0.276675, 0.667951, 0.264381)
 bones/17/rotation = Quaternion(2.27203e-07, -5.84749e-07, 0.395029, 0.918669)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.289732, 0.637458, 0.217438, 0.680017)
@@ -2261,6 +2262,8 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641864, 0)
 shape = SubResource("CapsuleShape3D_rfgdk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
