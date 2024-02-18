@@ -67,8 +67,9 @@ stream = ExtResource("5_7pq6n")
 autoplay = true
 bus = &"Music"
 
-[node name="NPC" parent="Level" instance=ExtResource("9_0b6m4")]
+[node name="NPC" parent="Level" node_paths=PackedStringArray("target") instance=ExtResource("9_0b6m4")]
 transform = Transform3D(-0.958864, 0, -0.283865, 0, 1, 0, 0.283865, 0, -0.958864, 6.91395, 0.5, 23.1659)
+target = NodePath("../Player")
 
 [node name="DialogueComponent2" parent="Level/NPC" instance=ExtResource("10_kkgyb")]
 dialogue = ExtResource("11_afld8")
