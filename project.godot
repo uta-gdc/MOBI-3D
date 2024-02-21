@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="3D Testing"
+config/name="MOBI 3D"
 run/main_scene="res://Scenes/Levels/Level Zero - StartMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="3D Testing Saved Settings"
@@ -23,8 +23,8 @@ buses/default_bus_layout="res://UI/default_bus_layout.tres"
 
 [autoload]
 
-Dialogic="*res://addons/dialogic/Other/DialogicGameHandler.gd"
 Network="*res://Systems/Network.gd"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
@@ -52,6 +52,13 @@ choices/hotkey_behaviour=0
 text/autoadvance_enabled=true
 text/autoadvance_fixed_delay=1.0
 text/autoadvance_per_word_delay=0.1
+directories/dch_directory={
+"blank": "res://Dialogue/Characters/blank.dch"
+}
+directories/dtl_directory={
+"beginning": "res://Dialogue/Timelines/beginning.dtl"
+}
+glossary/default_case_sensitive=true
 
 [display]
 
