@@ -128,5 +128,5 @@ bus = &"Music"
 [connection signal="pressed" from="MainButtons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="SettingsPanel/SettingsExit" to="." method="_on_settings_exit_pressed"]
-[connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_settings_exit_pressed"]
 [connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_credits_exit_pressed"]
+[connection signal="pressed" from="CreditsPanel/CreditsExit" to="." method="_on_settings_exit_pressed"]

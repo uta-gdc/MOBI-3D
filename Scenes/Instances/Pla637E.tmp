@@ -1,19 +1,23 @@
-[gd_scene load_steps=68 format=3 uid="uid://brxmbb723hivd"]
+[gd_scene load_steps=73 format=3 uid="uid://cy36aygvs66pn"]
 
-[ext_resource type="Script" path="res://Systems/Enemy.gd" id="1_nlmjb"]
-[ext_resource type="Texture2D" uid="uid://dq675fmt1rg8c" path="res://Assets/Models/gobot/textures/open_eye.png" id="2_fosku"]
-[ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Assets/Models/gobot/model/gobot.glb" id="4_67dq6"]
-[ext_resource type="Texture2D" uid="uid://cq4vp8f4ihjn6" path="res://Assets/Models/gobot/model/gobot_gobot_roughness_test.png" id="5_7kgax"]
-[ext_resource type="Shader" path="res://Assets/Models/gobot/gobot_skin.gdshader" id="6_d26wu"]
-[ext_resource type="Material" uid="uid://div0enqs04w5j" path="res://Assets/Models/gobot/materials/eye_mat.tres" id="7_dm8q0"]
-[ext_resource type="Script" path="res://Assets/Models/gobot/RandomModelColor.gd" id="8_0c03e"]
-[ext_resource type="Texture2D" uid="uid://dcrnwlrigg1yu" path="res://Assets/Models/gobot/model/gobot_gobot_diffuse.png" id="9_agsab"]
-[ext_resource type="Texture2D" uid="uid://cgkj45d67dalm" path="res://Assets/Models/gobot/model/gobot_gobot_roughness.png" id="10_s2xug"]
-[ext_resource type="Texture2D" uid="uid://d28w5bql3g21l" path="res://Assets/Models/gobot/model/gobot_gobot_normal.png" id="11_d8mx2"]
-[ext_resource type="PackedScene" uid="uid://338dke48iib1" path="res://Systems/Components/dialogue_component.tscn" id="11_h0j35"]
-[ext_resource type="PackedScene" uid="uid://4135bx1tnv61" path="res://Systems/Components/health_component.tscn" id="12_qsdfb"]
-[ext_resource type="AnimationLibrary" uid="uid://k45w5evgjbtp" path="res://Assets/Models/gobot/model/custom/custom_lib.res" id="12_rgcyr"]
-[ext_resource type="PackedScene" uid="uid://cxsclgnuuut6l" path="res://Systems/Components/hitbox_component.tscn" id="13_abkxj"]
+[ext_resource type="Script" path="res://Systems/Player.gd" id="1_bf7rg"]
+[ext_resource type="Texture2D" uid="uid://dq675fmt1rg8c" path="res://Assets/Models/gobot/textures/open_eye.png" id="2_fexxm"]
+[ext_resource type="Texture2D" uid="uid://cfdf62ci74tew" path="res://Assets/Models/gobot/textures/closed_eyes.png" id="3_ewi0s"]
+[ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Assets/Models/gobot/model/gobot.glb" id="4_fvg37"]
+[ext_resource type="Texture2D" uid="uid://cq4vp8f4ihjn6" path="res://Assets/Models/gobot/model/gobot_gobot_roughness_test.png" id="5_3t2ih"]
+[ext_resource type="Shader" path="res://Assets/Models/gobot/gobot_skin.gdshader" id="6_1nh76"]
+[ext_resource type="Material" uid="uid://div0enqs04w5j" path="res://Assets/Models/gobot/materials/eye_mat.tres" id="7_ce4y7"]
+[ext_resource type="Script" path="res://Assets/Models/gobot/RandomModelColor.gd" id="8_tw8m0"]
+[ext_resource type="Texture2D" uid="uid://dcrnwlrigg1yu" path="res://Assets/Models/gobot/model/gobot_gobot_diffuse.png" id="9_vcnqe"]
+[ext_resource type="Texture2D" uid="uid://cgkj45d67dalm" path="res://Assets/Models/gobot/model/gobot_gobot_roughness.png" id="10_f8xgq"]
+[ext_resource type="Texture2D" uid="uid://d28w5bql3g21l" path="res://Assets/Models/gobot/model/gobot_gobot_normal.png" id="11_t38cy"]
+[ext_resource type="AnimationLibrary" uid="uid://k45w5evgjbtp" path="res://Assets/Models/gobot/model/custom/custom_lib.res" id="12_wrq8b"]
+[ext_resource type="AudioStream" uid="uid://kucml70k00og" path="res://Assets/SFX/kirby walking sound.wav" id="13_skff7"]
+[ext_resource type="AudioStream" uid="uid://snd380gbawd" path="res://Assets/SFX/Jump sound effect ｜ No copyright.wav" id="14_h4adt"]
+[ext_resource type="AudioStream" uid="uid://b7t0uwfhsnrt7" path="res://Assets/SFX/Whoosh Sounds effects No copyright.wav" id="15_bol4s"]
+[ext_resource type="PackedScene" uid="uid://4135bx1tnv61" path="res://Systems/Components/health_component.tscn" id="16_7kvpw"]
+[ext_resource type="AudioStream" uid="uid://8kc66got7660" path="res://Assets/SFX/Super Mario 64 Damage Sound Effect.wav" id="17_w5y72"]
+[ext_resource type="PackedScene" uid="uid://cxsclgnuuut6l" path="res://Systems/Components/hitbox_component.tscn" id="18_3lc0w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4001"]
 render_priority = 1
@@ -23,7 +27,7 @@ emission_enabled = true
 emission = Color(0.972549, 0.27451, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u74jd"]
-shader = ExtResource("6_d26wu")
+shader = ExtResource("6_1nh76")
 shader_parameter/original_0 = Color(1, 0.34902, 1, 1)
 shader_parameter/original_1 = Color(1, 0.603922, 1, 1)
 shader_parameter/replace_0 = Color(0.286275, 0.52549, 0.556863, 1)
@@ -32,14 +36,14 @@ shader_parameter/replace_1 = null
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec6xy"]
 next_pass = SubResource("ShaderMaterial_u74jd")
 albedo_color = Color(0.160784, 0.505882, 0.964706, 1)
-albedo_texture = ExtResource("5_7kgax")
+albedo_texture = ExtResource("5_3t2ih")
 metallic_specular = 0.6
 clearcoat_enabled = true
 clearcoat_roughness = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5nav"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("2_fosku")
+albedo_texture = ExtResource("2_fexxm")
 roughness = 0.6
 uv1_offset = Vector3(0.1, 0, 0)
 texture_repeat = false
@@ -1083,13 +1087,13 @@ tracks/28/keys = PackedFloat32Array(0, 1, 0.0298192, 0.0194152, 0.000472977, 0.9
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll71x"]
 resource_name = "GobotMat"
 cull_mode = 2
-albedo_texture = ExtResource("9_agsab")
-metallic_texture = ExtResource("10_s2xug")
+albedo_texture = ExtResource("9_vcnqe")
+metallic_texture = ExtResource("10_f8xgq")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("10_s2xug")
+roughness_texture = ExtResource("10_f8xgq")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("11_d8mx2")
+normal_texture = ExtResource("11_t38cy")
 
 [sub_resource type="Animation" id="Animation_c7pi5"]
 length = 0.001
@@ -1103,7 +1107,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fosku")]
+"values": [ExtResource("2_fexxm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1115,7 +1119,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_fosku")]
+"values": [ExtResource("2_fexxm")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2137,7 +2141,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-185, -49)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8xvna"]
-graph_offset = Vector2(-17.6091, 123.45)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_g4wg5")
 nodes/Animation/position = Vector2(180, 300)
 nodes/Flip/node = SubResource("AnimationNodeAnimation_oi1x1")
@@ -2152,16 +2155,29 @@ nodes/output/position = Vector2(580, 80)
 node_connections = [&"FlipShot", 0, &"StateMachine", &"FlipShot", 1, &"Flip", &"HurtShot", 0, &"FlipShot", &"HurtShot", 1, &"Animation", &"output", 0, &"HurtShot"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k6o5k"]
-radius = 0.356518
-height = 1.37394
+radius = 0.428064
+height = 1.36549
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfgdk"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pbxrc"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("gobot/Armature/Skeleton3D/Gobot:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
-[node name="NPC" type="CharacterBody3D"]
-script = ExtResource("1_nlmjb")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xycw4"]
 
-[node name="gobot" parent="." instance=ExtResource("4_67dq6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gobot_model")]
+script = ExtResource("1_bf7rg")
+gobot_model = NodePath("gobot/Armature/Skeleton3D/Gobot")
+blink = false
+_left_eye_mat_override = "surface_material_override/1"
+_right_eye_mat_override = "surface_material_override/2"
+_open_eye = ExtResource("2_fexxm")
+_close_eye = ExtResource("3_ewi0s")
+
+[node name="gobot" parent="." instance=ExtResource("4_fvg37")]
 
 [node name="Skeleton3D" parent="gobot/Armature" index="0"]
 bones/0/position = Vector3(0.125361, 0.0989139, 0.0728901)
@@ -2170,14 +2186,14 @@ bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-0.109875, 0.0989111, -0.0510765)
 bones/1/rotation = Quaternion(0.679368, -0.310085, 0.392234, 0.537083)
 bones/1/scale = Vector3(1, 1, 1)
-bones/2/position = Vector3(0, 0.366512, 0)
-bones/2/rotation = Quaternion(0.0697305, -0.0271998, 0.00190199, 0.997193)
-bones/3/rotation = Quaternion(1, 1.97433e-10, -7.26989e-08, 7.46009e-09)
-bones/4/rotation = Quaternion(-0.376384, -0.193585, -0.0491186, 0.904681)
-bones/5/rotation = Quaternion(0.225195, 1.1148e-06, -7.69572e-06, 0.974314)
-bones/6/rotation = Quaternion(-0.201519, 0.506925, 0.163491, 0.822002)
-bones/7/rotation = Quaternion(0.399509, -1.05224e-06, 1.36817e-05, 0.916729)
-bones/8/rotation = Quaternion(-0.670017, -0.263484, -0.636106, 0.27753)
+bones/2/position = Vector3(0, 0.360361, 0)
+bones/2/rotation = Quaternion(0.0697426, -0.0199053, 0.00139191, 0.997365)
+bones/3/rotation = Quaternion(1, 1.17549e-10, -7.54817e-08, 3.72529e-09)
+bones/4/rotation = Quaternion(-0.430304, -0.183223, -0.0573152, 0.882033)
+bones/5/rotation = Quaternion(0.310581, 1.07349e-06, -1.06121e-05, 0.950547)
+bones/6/rotation = Quaternion(-0.224162, 0.509141, 0.187508, 0.809548)
+bones/7/rotation = Quaternion(0.456052, -1.01826e-06, 1.56103e-05, 0.889953)
+bones/8/rotation = Quaternion(-0.697655, -0.250875, -0.605666, 0.288977)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(2.16937e-07, 5.35541e-07, -0.395029, 0.918669)
 bones/9/scale = Vector3(1, 1, 1)
@@ -2190,7 +2206,7 @@ bones/13/rotation = Quaternion(-0.502333, 1.50049e-05, -2.85054e-05, 0.864674)
 bones/14/rotation = Quaternion(-0.371224, -0.00197698, 0.00585369, 0.928523)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(-0.502333, 1.49999e-05, -2.85068e-05, 0.864674)
-bones/16/rotation = Quaternion(-0.64578, 0.27367, 0.660698, 0.26749)
+bones/16/rotation = Quaternion(-0.615745, 0.2853, 0.688776, 0.255049)
 bones/17/rotation = Quaternion(2.27203e-07, -5.84749e-07, 0.395029, 0.918669)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.289732, 0.637458, 0.217438, 0.680017)
@@ -2209,13 +2225,13 @@ bones/24/rotation = Quaternion(-0.0697565, 4.58965e-08, 3.0345e-09, 0.997564)
 material_overlay = SubResource("StandardMaterial3D_t4001")
 surface_material_override/0 = SubResource("StandardMaterial3D_ec6xy")
 surface_material_override/1 = SubResource("StandardMaterial3D_f5nav")
-surface_material_override/2 = ExtResource("7_dm8q0")
-script = ExtResource("8_0c03e")
+surface_material_override/2 = ExtResource("7_ce4y7")
+script = ExtResource("8_tw8m0")
 
 [node name="AnimationPlayer" parent="gobot" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_03he3"),
-"custom_lib": ExtResource("12_rgcyr")
+"custom_lib": ExtResource("12_wrq8b")
 }
 
 [node name="BlinkTimer" type="Timer" parent="."]
@@ -2235,7 +2251,7 @@ unique_name_in_owner = true
 root_node = NodePath("%AnimationTree/../gobot")
 libraries = {
 "": SubResource("AnimationLibrary_03he3"),
-"custom_lib": ExtResource("12_rgcyr")
+"custom_lib": ExtResource("12_wrq8b")
 }
 tree_root = SubResource("AnimationNodeBlendTree_8xvna")
 anim_player = NodePath("../gobot/AnimationPlayer")
@@ -2251,21 +2267,49 @@ parameters/StateMachine/Run/Add2/add_amount = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643243, 0)
 shape = SubResource("CapsuleShape3D_k6o5k")
 
-[node name="DialogueComponent" parent="." instance=ExtResource("11_h0j35")]
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00605708, 2.51374, -3.58057)
 
-[node name="HealthComponent" parent="." instance=ExtResource("12_qsdfb")]
-visible = false
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(-0.999786, -4.5625e-08, -0.0206808, -0.0103573, 0.865554, 0.500709, 0.0179003, 0.500816, -0.865369, -0.0522744, 0.0104244, 0.0481257)
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_abkxj")]
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_pbxrc")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("13_skff7")
+bus = &"Sound FX"
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("14_h4adt")
+volume_db = -15.0
+bus = &"Sound FX"
+
+[node name="Roll" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("15_bol4s")
+bus = &"Sound FX"
+
+[node name="HealthComponent" parent="." instance=ExtResource("16_7kvpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Hurt" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("17_w5y72")
+volume_db = -12.0
+bus = &"Sound FX"
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("18_3lc0w")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641864, 0)
-shape = SubResource("CapsuleShape3D_rfgdk")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649092, 0)
+shape = SubResource("CapsuleShape3D_xycw4")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
-[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
 
 [editable path="gobot"]
