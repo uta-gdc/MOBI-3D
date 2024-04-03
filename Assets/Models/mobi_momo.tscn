@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1qrwk8fhb7rh"]
+
+[ext_resource type="PackedScene" uid="uid://c6f8k24d455u2" path="res://Assets/Models/MOBI MOMO.glb" id="1_b7hhw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wi5j"]
+albedo_color = Color(0.254902, 1, 0.619608, 1)
+
+[node name="MOBI MOMO" instance=ExtResource("1_b7hhw")]
+metadata/_edit_group_ = true
+
+[node name="MOMO-extruded" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -23.8451, -18.4118, -7.87659)
+surface_material_override/0 = SubResource("StandardMaterial3D_1wi5j")
